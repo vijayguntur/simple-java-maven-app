@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent Kavi
     stages {
         stage('Build') {
             steps {
