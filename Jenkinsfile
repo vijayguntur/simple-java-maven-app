@@ -1,5 +1,5 @@
 pipeline {
-    agent Kavi
+    agent { label 'Javabuild' }
     stages {
         stage('Build') {
             steps {
