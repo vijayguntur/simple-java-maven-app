@@ -7,6 +7,7 @@ pipeline {
                 bat 'echo %path%'
             }
         }
+        agent { label 'master' }
         stage('Test') {
             steps {
                 bat 'mvn test'
