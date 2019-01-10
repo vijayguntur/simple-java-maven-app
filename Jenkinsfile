@@ -21,7 +21,6 @@ pipeline {
         stage('Deliver') {
             agent { label 'Javabuild' }
             steps {
-                dir('..\..\')
                 unstash 'app'
                 //sh './jenkins/scripts/deliver.sh'
             }
