@@ -22,6 +22,7 @@ pipeline {
             agent { label 'Javabuild' }
             steps {
                 unstash 'app'
+                writeFile file: 'RunAssessment.txt', text: 'Working with files the Groovy way is easy.'
                 //sh './jenkins/scripts/deliver.sh'
             }
         }
