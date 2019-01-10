@@ -1,14 +1,15 @@
 pipeline {
+    agent none
     stages {
-        agent { label 'Javabuild' }
         stage('Build') {
+            agent { label 'Javabuild' }
             steps {
                 bat 'mvn -B -DskipTests clean package'
                 bat 'echo %path%'
             }
         }
-        agent { label 'master' }
         stage('Test') {
+            agent { label 'master' }
             steps {
                 bat 'mvn test'
             }
@@ -18,8 +19,8 @@ pipeline {
                 }
             }
         }
-        agent { label 'Javabuild' }
         stage('Deliver') {
+            agent { label 'Javabuild' }
             steps {
                 sh './jenkins/scripts/deliver.sh'
             }
