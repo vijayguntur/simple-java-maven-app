@@ -1,15 +1,14 @@
 pipeline {
-    agent none
+    agent { label 'master' }
     stages {
         stage('Build') {
-            agent { label 'Javabuild' }
             steps {
                 bat 'mvn -B -DskipTests clean package'
                 bat 'echo %path%'
+                stash includes: '**/target/*.jar', name: 'app'
             }
         }
         stage('Test') {
-            agent { label 'master' }
             steps {
                 bat 'mvn test'
             }
@@ -22,6 +21,7 @@ pipeline {
         stage('Deliver') {
             agent { label 'Javabuild' }
             steps {
+                unstash 'app'
                 sh './jenkins/scripts/deliver.sh'
             }
         }
