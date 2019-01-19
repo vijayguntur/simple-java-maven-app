@@ -22,10 +22,12 @@ pipeline {
             //agent { label 'Javabuild' }
             steps {
                  
-                
+                File file = new File("out.txt")
+                file.append("hello\n")
+                file.append("second hello\r\n")
                 //unstash 'app'
-                writeFile file: 'RunAssessment.txt', text: 'Working with files the Groovy way is easy.\r\n'
-                file.append("second line comes here\n")
+                //writeFile file: 'RunAssessment.txt', text: 'Working with files the Groovy way is easy.\r\n'
+                //file.append("second line comes here\n")
                 //sh './jenkins/scripts/deliver.sh'
             }
         }
