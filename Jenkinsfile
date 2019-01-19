@@ -5,7 +5,7 @@ pipeline {
             steps {
                 bat 'mvn -B -DskipTests clean package'
                 bat 'echo %path%'
-                stash includes: '**/target/*.jar', name: 'app'
+                //stash includes: '**/target/*.jar', name: 'app'
             }
         }
         stage('Test') {
@@ -19,10 +19,10 @@ pipeline {
             }
         }
         stage('Deliver') {
-            agent { label 'Javabuild' }
+            //agent { label 'Javabuild' }
             steps {
-                unstash 'app'
-                writeFile file: 'RunAssessment.txt', text: 'Working with files the Groovy way is easy.'+ \\n 'second line' + \\r '#third line commnets'
+                //unstash 'app'
+                writeFile file: 'RunAssessment.txt', text: 'Working with files the Groovy way is easy.'+ \\r\\n 'second line' + \\r\\n '#third line commnets'
                 //sh './jenkins/scripts/deliver.sh'
             }
         }
