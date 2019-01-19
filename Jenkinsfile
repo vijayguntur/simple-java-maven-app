@@ -25,7 +25,7 @@ pipeline {
                 
                 //unstash 'app'
                 writeFile file: 'RunAssessment.txt', text: 'Working with files the Groovy way is easy.\r\n'
-                file.text = 'second line comes here'
+                file.append("second line comes here\n")
                 //sh './jenkins/scripts/deliver.sh'
             }
         }
